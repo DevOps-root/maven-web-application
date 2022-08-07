@@ -14,9 +14,11 @@ stage('CloneScm')
 git branch: 'master', credentialsId: '72d42551-495e-414f-87ac-87693b5d04ec', url: 'https://github.com/DevOps-root/maven-web-application.git'
 }
 
-stage('BuildPackage')
+ stage('Build')
 {
-sh "${mavenHome}/bin/mvn clean package"
+  steps{
+  sh  "mvn clean package"
+  }
 }
 	
 }
