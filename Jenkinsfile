@@ -7,13 +7,12 @@ tools{
 maven 'maven3.6.2'
 
 }
-	stages{
-
-
+stages{
 
 stage('CloneScm')
+
 {
-	step{
+step{
 git branch: 'master', credentialsId: '72d42551-495e-414f-87ac-87693b5d04ec', url: 'https://github.com/DevOps-root/maven-web-application.git'
 }
 }
