@@ -1,7 +1,13 @@
-node
-{
+pipeline{
 
-def mavenHome=tool name: "maven3.6.2"
+agent any
+
+tools{
+maven 'maven3.6.2'
+
+}
+
+
 
 stage('CloneScm')
 {
