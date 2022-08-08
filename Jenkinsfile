@@ -1,31 +1,16 @@
-pipeline
+node
 {
 
-agent any
+def mavenHome = tool name: "maven3.6.2"
 
-tools{
-maven 'maven3.6.2'
-}
-	
-	
-	stages{
-//Get the code from GitHub
-    stage('CheckoutCode'){
-	steps{
-	   
-	git branch: 'master', credentialsId: '72d42551-495e-414f-87ac-87693b5d04ec', url: 'https://github.com/DevOps-root/maven-web-application.git'
-	}
-	}
-	
-	
-	
-
- stage('Build')
+stage('ScmClone')
 {
-  steps{
-  sh  "mvn clean package"
-  }
+  git branch: 'dev', credentialsId: '53b17209-0264-4972-a68b-8f678bc652a5', url: 'https://github.com/DevOps-root/maven-web-application.git'
 }
-	
+
+stage('BuildArtifact')
+{
+sh "${mavenHome}/bin/mvn clean package"
 }
+
 }
