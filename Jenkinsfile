@@ -13,4 +13,9 @@ stage('BuildArtifact')
 sh "${mavenHome}/bin/mvn clean package"
 }
 
+stage('SonarScannerReport')
+{
+sh "${mavenHome}/bin/mvn sonar:sonar"
+}  
+  
 }
